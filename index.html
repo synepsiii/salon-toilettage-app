@@ -3,22 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Salon de Toilettage</title>
-    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide-react/0.263.1/umd/lucide-react.min.js"></script>
+    <title>🐕 Salon de Toilettage</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone@7.23.4/babel.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#3B82F6">
-    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🐩%3C/text%3E%3C/svg%3E">
+    <style>
+        body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif; }
+        .lucide { width: 20px; height: 20px; stroke: currentColor; stroke-width: 2; fill: none; }
+    </style>
 </head>
 <body>
-    <div id="root"></div>
-    
+    <div id="root">
+        <div style="display: flex; justify-content: center; align-items: center; height: 100vh; font-size: 18px;">
+            ⏳ Chargement de l'application...
+        </div>
+    </div>
+
     <script type="text/babel">
+        // Icônes Lucide simplifiées
+        const Menu = () => React.createElement('svg', { className: 'lucide', viewBox: '0 0 24 24' }, 
+            React.createElement('line', { x1: 4, x2: 20, y1: 6, y2: 6 }),
+            React.createElement('line', { x1: 4, x2: 20, y1: 12, y2: 12 }),
+            React.createElement('line', { x1: 4, x2: 20, y1: 18, y2: 18 })
+        );
+        const X = () => React.createElement('svg', { className: 'lucide', viewBox: '0 0 24 24' }, 
+            React.createElement('path', { d: 'm18 6-12 12' }),
+            React.createElement('path', { d: 'm6 6 12 12' })
+        );
+        const Plus = () => React.createElement('svg', { className: 'lucide', viewBox: '0 0 24 24' }, 
+            React.createElement('path', { d: 'M5 12h14' }),
+            React.createElement('path', { d: 'm12 5 0 14' })
+        );
+        const Search = () => React.createElement('svg', { className: 'lucide', viewBox: '0 0 24 24' }, 
+            React.createElement('circle', { cx: 11, cy: 11, r: 8 }),
+            React.createElement('path', { d: 'm21 21-4.35-4.35' })
+        );
+        const Edit3 = () => React.createElement('svg', { className: 'lucide', viewBox: '0 0 24 24' }, 
+            React.createElement('path', { d: 'M12 20h9' }),
+            React.createElement('path', { d: 'M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z' })
+        );
+        const Trash2 = () => React.createElement('svg', { className: 'lucide', viewBox: '0 0 24 24' }, 
+            React.createElement('path', { d: 'M3 6h18' }),
+            React.createElement('path', { d: 'M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6' }),
+            React.createElement('path', { d: 'M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2' })
+        );
+        const Phone = () => React.createElement('svg', { className: 'lucide', viewBox: '0 0 24 24' }, 
+            React.createElement('path', { d: 'M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z' })
+        );
+        const MessageSquare = () => React.createElement('svg', { className: 'lucide', viewBox: '0 0 24 24' }, 
+            React.createElement('path', { d: 'M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z' })
+        );
+        const User = () => React.createElement('svg', { className: 'lucide', viewBox: '0 0 24 24' }, 
+            React.createElement('path', { d: 'M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2' }),
+            React.createElement('circle', { cx: 12, cy: 7, r: 4 })
+        );
+        const Dog = () => React.createElement('svg', { className: 'lucide', viewBox: '0 0 24 24' }, 
+            React.createElement('path', { d: 'M10 5.172C10 3.782 8.423 2.679 6.5 3c-2.823.47-4.113 6.006-4 7 .08.703 1.725 1.722 3.656 1 1.261-.472 1.96-1.045 2.644-1.8.744-.823 1.044-1.536 1.2-2.228Z' }),
+            React.createElement('path', { d: 'M14.267 5.172c0-1.39 1.577-2.493 3.5-2.172 2.823.47 4.113 6.006 4 7-.08.703-1.725 1.722-3.656 1-1.261-.472-1.855-1.091-2.539-1.8C14.728 8.377 14.267 6.772 14.267 5.172Z' }),
+            React.createElement('path', { d: 'M8 14v.5c0 .662-.336 1.24-.5 2-.207.955.124 1.96 2.5 2 3.256.04 6-.18 7.5-1 .426-.233.618-.84.5-1.5L17.5 14' }),
+            React.createElement('path', { d: 'M9 12c.5 0 .8-.48.8-1.5s-.3-1.5-.8-1.5-.8.48-.8 1.5.3 1.5.8 1.5Z' }),
+            React.createElement('path', { d: 'M15 12c.5 0 .8-.48.8-1.5s-.3-1.5-.8-1.5-.8.48-.8 1.5.3 1.5.8 1.5Z' })
+        );
+        const Calendar = () => React.createElement('svg', { className: 'lucide', viewBox: '0 0 24 24' }, 
+            React.createElement('path', { d: 'M8 2v4' }),
+            React.createElement('path', { d: 'M16 2v4' }),
+            React.createElement('rect', { width: 18, height: 18, x: 3, y: 4, rx: 2 }),
+            React.createElement('path', { d: 'M3 10h18' })
+        );
+
         const { useState, useEffect } = React;
-        const { Plus, Search, Edit3, Trash2, Phone, MessageSquare, Calendar, Dog, User, Menu, X, Camera } = LucideReact;
 
         const GroomingSalonApp = () => {
           const [activeView, setActiveView] = useState('clients');
@@ -66,47 +120,14 @@
               ]
             }
           ]);
+
           const [searchTerm, setSearchTerm] = useState('');
           const [showClientForm, setShowClientForm] = useState(false);
           const [showAnimalForm, setShowAnimalForm] = useState(false);
           const [showRendezVousForm, setShowRendezVousForm] = useState(false);
           const [editingClient, setEditingClient] = useState(null);
-          const [editingAnimal, setEditingAnimal] = useState(null);
           const [selectedClientId, setSelectedClientId] = useState(null);
           const [selectedAnimal, setSelectedAnimal] = useState(null);
-
-          // Notifications
-          useEffect(() => {
-            const checkUpcomingAppointments = () => {
-              const tomorrow = new Date();
-              tomorrow.setDate(tomorrow.getDate() + 1);
-              const tomorrowStr = tomorrow.toISOString().split('T')[0];
-
-              clients.forEach(client => {
-                client.animaux.forEach(animal => {
-                  animal.rendezVous.forEach(rdv => {
-                    if (rdv.date === tomorrowStr) {
-                      if (Notification.permission === 'granted') {
-                        new Notification(`Rappel RDV`, {
-                          body: `${animal.nom} (${client.nom}) - ${rdv.prestation} demain`,
-                          icon: '🐕'
-                        });
-                      }
-                    }
-                  });
-                });
-              });
-            };
-
-            // Demander permission pour notifications
-            if (Notification.permission === 'default') {
-              Notification.requestPermission();
-            }
-
-            // Vérifier tous les jours à 9h
-            const interval = setInterval(checkUpcomingAppointments, 24 * 60 * 60 * 1000);
-            return () => clearInterval(interval);
-          }, [clients]);
 
           const filteredClients = clients.filter(client =>
             client.nom.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -114,11 +135,7 @@
           );
 
           const addClient = (clientData) => {
-            const newClient = {
-              ...clientData,
-              id: Date.now(),
-              animaux: []
-            };
+            const newClient = { ...clientData, id: Date.now(), animaux: [] };
             setClients([...clients, newClient]);
             setShowClientForm(false);
           };
@@ -130,7 +147,7 @@
           };
 
           const deleteClient = (clientId) => {
-            if (window.confirm('Êtes-vous sûr de vouloir supprimer ce client ?')) {
+            if (window.confirm('Supprimer ce client ?')) {
               setClients(clients.filter(c => c.id !== clientId));
             }
           };
@@ -168,464 +185,322 @@
             setSelectedAnimal(null);
           };
 
-          const ClientForm = ({ client, onSubmit, onCancel }) => {
-            const [formData, setFormData] = useState(client || {
-              nom: '', telephone: '', email: '', adresse: ''
-            });
+          return React.createElement('div', { className: 'min-h-screen bg-gradient-to-br from-pink-50 to-blue-50 relative' },
+            // Header
+            React.createElement('header', { className: 'bg-white shadow-md p-4 relative z-10' },
+              React.createElement('div', { className: 'flex items-center justify-between' },
+                React.createElement('button', {
+                  onClick: () => setSidebarOpen(!sidebarOpen),
+                  className: 'p-2 hover:bg-gray-100 rounded-lg'
+                }, React.createElement(Menu)),
+                React.createElement('h1', { className: 'text-2xl font-bold text-gray-800' }, '🐕 Salon de Toilettage'),
+                React.createElement('div', { className: 'w-10' })
+              )
+            ),
 
-            return (
-              <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-                <div className="bg-white rounded-lg p-6 w-full max-w-md">
-                  <h3 className="text-xl font-bold mb-4">
-                    {client ? 'Modifier le client' : 'Ajouter un client'}
-                  </h3>
-                  <div className="space-y-4">
-                    <input
-                      type="text"
-                      placeholder="Nom complet"
-                      value={formData.nom}
-                      onChange={(e) => setFormData({...formData, nom: e.target.value})}
-                      className="w-full p-3 border rounded-lg"
-                    />
-                    <input
-                      type="tel"
-                      placeholder="Téléphone"
-                      value={formData.telephone}
-                      onChange={(e) => setFormData({...formData, telephone: e.target.value})}
-                      className="w-full p-3 border rounded-lg"
-                    />
-                    <input
-                      type="email"
-                      placeholder="Email"
-                      value={formData.email}
-                      onChange={(e) => setFormData({...formData, email: e.target.value})}
-                      className="w-full p-3 border rounded-lg"
-                    />
-                    <textarea
-                      placeholder="Adresse"
-                      value={formData.adresse}
-                      onChange={(e) => setFormData({...formData, adresse: e.target.value})}
-                      className="w-full p-3 border rounded-lg h-20"
-                    />
-                  </div>
-                  <div className="flex gap-3 mt-6">
-                    <button
-                      onClick={() => onSubmit(formData)}
-                      className="flex-1 bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600"
-                    >
-                      {client ? 'Modifier' : 'Ajouter'}
-                    </button>
-                    <button
-                      onClick={onCancel}
-                      className="flex-1 bg-gray-300 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-400"
-                    >
-                      Annuler
-                    </button>
-                  </div>
-                </div>
-              </div>
-            );
-          };
+            // Sidebar
+            React.createElement('div', {
+              className: `fixed inset-y-0 left-0 transform ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} 
+                          w-64 bg-white shadow-lg transition-transform duration-300 ease-in-out z-20`
+            },
+              React.createElement('div', { className: 'p-4' },
+                React.createElement('div', { className: 'flex items-center justify-between mb-6' },
+                  React.createElement('h2', { className: 'text-xl font-bold' }, 'Menu'),
+                  React.createElement('button', { onClick: () => setSidebarOpen(false) }, React.createElement(X))
+                ),
+                React.createElement('nav', { className: 'space-y-2' },
+                  React.createElement('button', {
+                    onClick: () => { setActiveView('clients'); setSidebarOpen(false); },
+                    className: `w-full flex items-center gap-3 p-3 rounded-lg text-left hover:bg-gray-100 
+                               ${activeView === 'clients' ? 'bg-blue-100 text-blue-600' : ''}`
+                  },
+                    React.createElement(User),
+                    'Liste des clients'
+                  ),
+                  React.createElement('button', {
+                    onClick: () => { setShowClientForm(true); setSidebarOpen(false); },
+                    className: 'w-full flex items-center gap-3 p-3 rounded-lg text-left hover:bg-gray-100'
+                  },
+                    React.createElement(Plus),
+                    'Ajouter un client'
+                  ),
+                  React.createElement('button', {
+                    onClick: () => { setActiveView('animaux'); setSidebarOpen(false); },
+                    className: `w-full flex items-center gap-3 p-3 rounded-lg text-left hover:bg-gray-100
+                               ${activeView === 'animaux' ? 'bg-green-100 text-green-600' : ''}`
+                  },
+                    React.createElement(Dog),
+                    'Tous les animaux'
+                  )
+                )
+              )
+            ),
 
-          const AnimalForm = ({ onSubmit, onCancel }) => {
-            const [formData, setFormData] = useState({
-              nom: '', espece: 'Chien', race: '', age: '', photo: '🐕'
-            });
+            // Overlay
+            sidebarOpen && React.createElement('div', {
+              className: 'fixed inset-0 bg-black bg-opacity-30 z-10',
+              onClick: () => setSidebarOpen(false)
+            }),
 
-            const emojis = ['🐕', '🐶', '🐩', '🐱', '🐈', '🐰', '🐹'];
+            // Main content
+            React.createElement('main', { className: 'p-4 relative z-10' },
+              activeView === 'clients' && React.createElement('div', { className: 'max-w-6xl mx-auto' },
+                React.createElement('div', { className: 'flex flex-col sm:flex-row gap-4 mb-6' },
+                  React.createElement('div', { className: 'flex-1 relative' },
+                    React.createElement(Search, { className: 'absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400' }),
+                    React.createElement('input', {
+                      type: 'text',
+                      placeholder: 'Rechercher un client...',
+                      value: searchTerm,
+                      onChange: (e) => setSearchTerm(e.target.value),
+                      className: 'w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500'
+                    })
+                  ),
+                  React.createElement('button', {
+                    onClick: () => setShowClientForm(true),
+                    className: 'bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 flex items-center gap-2'
+                  },
+                    React.createElement(Plus),
+                    'Nouveau client'
+                  )
+                ),
 
-            return (
-              <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-                <div className="bg-white rounded-lg p-6 w-full max-w-md">
-                  <h3 className="text-xl font-bold mb-4">Ajouter un animal</h3>
-                  <div className="space-y-4">
-                    <input
-                      type="text"
-                      placeholder="Nom de l'animal"
-                      value={formData.nom}
-                      onChange={(e) => setFormData({...formData, nom: e.target.value})}
-                      className="w-full p-3 border rounded-lg"
-                    />
-                    <select
-                      value={formData.espece}
-                      onChange={(e) => setFormData({...formData, espece: e.target.value})}
-                      className="w-full p-3 border rounded-lg"
-                    >
-                      <option value="Chien">Chien</option>
-                      <option value="Chat">Chat</option>
-                      <option value="Lapin">Lapin</option>
-                      <option value="Autre">Autre</option>
-                    </select>
-                    <input
-                      type="text"
-                      placeholder="Race"
-                      value={formData.race}
-                      onChange={(e) => setFormData({...formData, race: e.target.value})}
-                      className="w-full p-3 border rounded-lg"
-                    />
-                    <input
-                      type="number"
-                      placeholder="Âge"
-                      value={formData.age}
-                      onChange={(e) => setFormData({...formData, age: e.target.value})}
-                      className="w-full p-3 border rounded-lg"
-                    />
-                    <div className="space-y-2">
-                      <label className="block text-sm font-medium">Photo (emoji)</label>
-                      <div className="flex gap-2 flex-wrap">
-                        {emojis.map(emoji => (
-                          <button
-                            key={emoji}
-                            type="button"
-                            onClick={() => setFormData({...formData, photo: emoji})}
-                            className={`text-2xl p-2 rounded ${formData.photo === emoji ? 'bg-blue-100' : 'bg-gray-100'}`}
-                          >
-                            {emoji}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex gap-3 mt-6">
-                    <button
-                      onClick={() => onSubmit(formData)}
-                      className="flex-1 bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600"
-                    >
-                      Ajouter
-                    </button>
-                    <button
-                      onClick={onCancel}
-                      className="flex-1 bg-gray-300 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-400"
-                    >
-                      Annuler
-                    </button>
-                  </div>
-                </div>
-              </div>
-            );
-          };
-
-          const RendezVousForm = ({ onSubmit, onCancel }) => {
-            const [formData, setFormData] = useState({
-              date: '', prestation: '', prix: ''
-            });
-
-            return (
-              <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-                <div className="bg-white rounded-lg p-6 w-full max-w-md">
-                  <h3 className="text-xl font-bold mb-4">Ajouter un rendez-vous</h3>
-                  <div className="space-y-4">
-                    <input
-                      type="date"
-                      value={formData.date}
-                      onChange={(e) => setFormData({...formData, date: e.target.value})}
-                      className="w-full p-3 border rounded-lg"
-                    />
-                    <select
-                      value={formData.prestation}
-                      onChange={(e) => setFormData({...formData, prestation: e.target.value})}
-                      className="w-full p-3 border rounded-lg"
-                    >
-                      <option value="">Choisir une prestation</option>
-                      <option value="Bain simple">Bain simple - 20€</option>
-                      <option value="Coupe + bain">Coupe + bain - 35€</option>
-                      <option value="Toilettage complet">Toilettage complet - 45€</option>
-                      <option value="Toilettage royal">Toilettage royal - 65€</option>
-                      <option value="Épilation">Épilation - 25€</option>
-                    </select>
-                    <input
-                      type="number"
-                      placeholder="Prix (€)"
-                      value={formData.prix}
-                      onChange={(e) => setFormData({...formData, prix: e.target.value})}
-                      className="w-full p-3 border rounded-lg"
-                    />
-                  </div>
-                  <div className="flex gap-3 mt-6">
-                    <button
-                      onClick={() => onSubmit(formData)}
-                      className="flex-1 bg-purple-500 text-white py-2 px-4 rounded-lg hover:bg-purple-600"
-                    >
-                      Ajouter
-                    </button>
-                    <button
-                      onClick={onCancel}
-                      className="flex-1 bg-gray-300 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-400"
-                    >
-                      Annuler
-                    </button>
-                  </div>
-                </div>
-              </div>
-            );
-          };
-
-          return (
-            <div className="min-h-screen bg-gradient-to-br from-pink-50 to-blue-50 relative">
-              {/* Fond d'écran avec caniche */}
-              <div className="absolute inset-0 opacity-5 bg-center bg-no-repeat bg-contain" 
-                   style={{backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'%3E%3Ctext y=\'.9em\' font-size=\'90\'%3E🐩%3C/text%3E%3C/svg%3E")'}}>
-              </div>
-              
-              {/* Header */}
-              <header className="bg-white shadow-md p-4 relative z-10">
-                <div className="flex items-center justify-between">
-                  <button 
-                    onClick={() => setSidebarOpen(!sidebarOpen)}
-                    className="p-2 hover:bg-gray-100 rounded-lg"
-                  >
-                    <Menu size={24} />
-                  </button>
-                  <h1 className="text-2xl font-bold text-gray-800">🐕 Salon de Toilettage</h1>
-                  <div className="w-10"></div>
-                </div>
-              </header>
-
-              {/* Sidebar */}
-              <div className={`fixed inset-y-0 left-0 transform ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} 
-                              w-64 bg-white shadow-lg transition-transform duration-300 ease-in-out z-20`}>
-                <div className="p-4">
-                  <div className="flex items-center justify-between mb-6">
-                    <h2 className="text-xl font-bold">Menu</h2>
-                    <button onClick={() => setSidebarOpen(false)}>
-                      <X size={24} />
-                    </button>
-                  </div>
-                  
-                  <nav className="space-y-2">
-                    <button
-                      onClick={() => { setActiveView('clients'); setSidebarOpen(false); }}
-                      className={`w-full flex items-center gap-3 p-3 rounded-lg text-left hover:bg-gray-100 
-                                 ${activeView === 'clients' ? 'bg-blue-100 text-blue-600' : ''}`}
-                    >
-                      <User size={20} />
-                      Liste des clients
-                    </button>
-                    <button
-                      onClick={() => { setShowClientForm(true); setSidebarOpen(false); }}
-                      className="w-full flex items-center gap-3 p-3 rounded-lg text-left hover:bg-gray-100"
-                    >
-                      <Plus size={20} />
-                      Ajouter un client
-                    </button>
-                    <button
-                      onClick={() => { setActiveView('animaux'); setSidebarOpen(false); }}
-                      className={`w-full flex items-center gap-3 p-3 rounded-lg text-left hover:bg-gray-100
-                                 ${activeView === 'animaux' ? 'bg-green-100 text-green-600' : ''}`}
-                    >
-                      <Dog size={20} />
-                      Tous les animaux
-                    </button>
-                    <button
-                      onClick={() => { setActiveView('rendezVous'); setSidebarOpen(false); }}
-                      className={`w-full flex items-center gap-3 p-3 rounded-lg text-left hover:bg-gray-100
-                                 ${activeView === 'rendezVous' ? 'bg-purple-100 text-purple-600' : ''}`}
-                    >
-                      <Calendar size={20} />
-                      Tous les RDV
-                    </button>
-                  </nav>
-                </div>
-              </div>
-
-              {/* Overlay */}
-              {sidebarOpen && (
-                <div 
-                  className="fixed inset-0 bg-black bg-opacity-30 z-10"
-                  onClick={() => setSidebarOpen(false)}
-                ></div>
-              )}
-
-              {/* Main content */}
-              <main className="p-4 relative z-10">
-                
-                {activeView === 'clients' && (
-                  <div className="max-w-6xl mx-auto">
-                    <div className="flex flex-col sm:flex-row gap-4 mb-6">
-                      <div className="flex-1 relative">
-                        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
-                        <input
-                          type="text"
-                          placeholder="Rechercher un client (nom ou téléphone)"
-                          value={searchTerm}
-                          onChange={(e) => setSearchTerm(e.target.value)}
-                          className="w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500"
-                        />
-                      </div>
-                      <button
-                        onClick={() => setShowClientForm(true)}
-                        className="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 flex items-center gap-2"
-                      >
-                        <Plus size={20} />
-                        Nouveau client
-                      </button>
-                    </div>
-
-                    <div className="grid gap-4">
-                      {filteredClients.map(client => (
-                        <div key={client.id} className="bg-white rounded-lg shadow-md p-6">
-                          <div className="flex justify-between items-start mb-4">
-                            <div className="flex-1">
-                              <h3 className="text-xl font-bold text-gray-800 mb-2">{client.nom}</h3>
-                              <div className="space-y-1 text-gray-600">
-                                <div className="flex items-center gap-2">
-                                  <Phone size={16} />
-                                  <a href={`tel:${client.telephone}`} className="text-blue-500 hover:underline">
-                                    {client.telephone}
-                                  </a>
-                                  <a href={`sms:${client.telephone}`} className="text-green-500 hover:text-green-600">
-                                    <MessageSquare size={16} />
-                                  </a>
-                                </div>
-                                <p>{client.email}</p>
-                                <p>{client.adresse}</p>
-                              </div>
-                            </div>
-                            <div className="flex gap-2">
-                              <button
-                                onClick={() => {setEditingClient(client); setShowClientForm(true);}}
-                                className="p-2 text-blue-500 hover:bg-blue-100 rounded"
-                              >
-                                <Edit3 size={16} />
-                              </button>
-                              <button
-                                onClick={() => deleteClient(client.id)}
-                                className="p-2 text-red-500 hover:bg-red-100 rounded"
-                              >
-                                <Trash2 size={16} />
-                              </button>
-                            </div>
-                          </div>
-                          
-                          <div className="border-t pt-4">
-                            <div className="flex justify-between items-center mb-3">
-                              <h4 className="font-semibold text-gray-700">Animaux ({client.animaux.length})</h4>
-                              <button
-                                onClick={() => {setSelectedClientId(client.id); setShowAnimalForm(true);}}
-                                className="text-green-500 hover:bg-green-100 p-1 rounded"
-                              >
-                                <Plus size={16} />
-                              </button>
-                            </div>
-                            
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                              {client.animaux.map(animal => (
-                                <div key={animal.id} className="bg-gray-50 rounded-lg p-3">
-                                  <div className="flex items-center gap-3 mb-2">
-                                    <span className="text-2xl">{animal.photo}</span>
-                                    <div>
-                                      <p className="font-medium">{animal.nom}</p>
-                                      <p className="text-sm text-gray-600">{animal.race}, {animal.age} ans</p>
-                                    </div>
-                                  </div>
-                                  <div className="flex justify-between items-center text-xs">
-                                    <span className="text-gray-500">{animal.rendezVous.length} RDV</span>
-                                    <button
-                                      onClick={() => {setSelectedAnimal(animal); setShowRendezVousForm(true);}}
-                                      className="text-purple-500 hover:text-purple-600"
-                                    >
-                                      + RDV
-                                    </button>
-                                  </div>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {activeView === 'animaux' && (
-                  <div className="max-w-6xl mx-auto">
-                    <h2 className="text-2xl font-bold mb-6">Tous les animaux</h2>
-                    <div className="grid gap-4">
-                      {clients.flatMap(client => 
-                        client.animaux.map(animal => (
-                          <div key={`${client.id}-${animal.id}`} className="bg-white rounded-lg shadow-md p-6">
-                            <div className="flex items-center gap-4">
-                              <span className="text-4xl">{animal.photo}</span>
-                              <div className="flex-1">
-                                <h3 className="text-xl font-bold">{animal.nom}</h3>
-                                <p className="text-gray-600">{animal.espece} • {animal.race} • {animal.age} ans</p>
-                                <p className="text-sm text-gray-500">Propriétaire: {client.nom}</p>
-                              </div>
-                              <div className="text-right">
-                                <p className="text-sm text-gray-500">{animal.rendezVous.length} rendez-vous</p>
-                                <button
-                                  onClick={() => {setSelectedAnimal(animal); setShowRendezVousForm(true);}}
-                                  className="mt-2 bg-purple-500 text-white px-4 py-1 rounded text-sm hover:bg-purple-600"
-                                >
-                                  + RDV
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        ))
-                      )}
-                    </div>
-                  </div>
-                )}
-
-                {activeView === 'rendezVous' && (
-                  <div className="max-w-6xl mx-auto">
-                    <h2 className="text-2xl font-bold mb-6">Historique des rendez-vous</h2>
-                    <div className="space-y-4">
-                      {clients.flatMap(client =>
-                        client.animaux.flatMap(animal =>
-                          animal.rendezVous.map(rdv => (
-                            <div key={rdv.id} className="bg-white rounded-lg shadow-md p-4">
-                              <div className="flex justify-between items-center">
-                                <div className="flex items-center gap-4">
-                                  <span className="text-2xl">{animal.photo}</span>
-                                  <div>
-                                    <h4 className="font-bold">{animal.nom}</h4>
-                                    <p className="text-sm text-gray-600">{client.nom}</p>
-                                  </div>
-                                </div>
-                                <div className="text-right">
-                                  <p className="font-semibold">{rdv.prestation}</p>
-                                  <p className="text-sm text-gray-600">{new Date(rdv.date).toLocaleDateString('fr-FR')}</p>
-                                  <p className="text-lg font-bold text-green-600">{rdv.prix}€</p>
-                                </div>
-                              </div>
-                            </div>
-                          ))
+                React.createElement('div', { className: 'grid gap-4' },
+                  filteredClients.map(client =>
+                    React.createElement('div', { key: client.id, className: 'bg-white rounded-lg shadow-md p-6' },
+                      React.createElement('div', { className: 'flex justify-between items-start mb-4' },
+                        React.createElement('div', { className: 'flex-1' },
+                          React.createElement('h3', { className: 'text-xl font-bold text-gray-800 mb-2' }, client.nom),
+                          React.createElement('div', { className: 'space-y-1 text-gray-600' },
+                            React.createElement('div', { className: 'flex items-center gap-2' },
+                              React.createElement(Phone),
+                              React.createElement('a', {
+                                href: `tel:${client.telephone}`,
+                                className: 'text-blue-500 hover:underline'
+                              }, client.telephone),
+                              React.createElement('a', {
+                                href: `sms:${client.telephone}`,
+                                className: 'text-green-500 hover:text-green-600'
+                              }, React.createElement(MessageSquare))
+                            ),
+                            React.createElement('p', {}, client.email),
+                            React.createElement('p', {}, client.adresse)
+                          )
+                        ),
+                        React.createElement('div', { className: 'flex gap-2' },
+                          React.createElement('button', {
+                            onClick: () => { setEditingClient(client); setShowClientForm(true); },
+                            className: 'p-2 text-blue-500 hover:bg-blue-100 rounded'
+                          }, React.createElement(Edit3)),
+                          React.createElement('button', {
+                            onClick: () => deleteClient(client.id),
+                            className: 'p-2 text-red-500 hover:bg-red-100 rounded'
+                          }, React.createElement(Trash2))
                         )
-                      )}
-                    </div>
-                  </div>
-                )}
-              </main>
+                      ),
 
-              {/* Formulaires modaux */}
-              {showClientForm && (
-                <ClientForm
-                  client={editingClient}
-                  onSubmit={editingClient ? updateClient : addClient}
-                  onCancel={() => {setShowClientForm(false); setEditingClient(null);}}
-                />
-              )}
+                      React.createElement('div', { className: 'border-t pt-4' },
+                        React.createElement('div', { className: 'flex justify-between items-center mb-3' },
+                          React.createElement('h4', { className: 'font-semibold text-gray-700' }, `Animaux (${client.animaux.length})`),
+                          React.createElement('button', {
+                            onClick: () => { setSelectedClientId(client.id); setShowAnimalForm(true); },
+                            className: 'text-green-500 hover:bg-green-100 p-1 rounded'
+                          }, React.createElement(Plus))
+                        ),
 
-              {showAnimalForm && (
-                <AnimalForm
-                  onSubmit={addAnimal}
-                  onCancel={() => {setShowAnimalForm(false); setSelectedClientId(null);}}
-                />
-              )}
+                        React.createElement('div', { className: 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3' },
+                          client.animaux.map(animal =>
+                            React.createElement('div', { key: animal.id, className: 'bg-gray-50 rounded-lg p-3' },
+                              React.createElement('div', { className: 'flex items-center gap-3 mb-2' },
+                                React.createElement('span', { className: 'text-2xl' }, animal.photo),
+                                React.createElement('div', {},
+                                  React.createElement('p', { className: 'font-medium' }, animal.nom),
+                                  React.createElement('p', { className: 'text-sm text-gray-600' }, `${animal.race}, ${animal.age} ans`)
+                                )
+                              ),
+                              React.createElement('div', { className: 'flex justify-between items-center text-xs' },
+                                React.createElement('span', { className: 'text-gray-500' }, `${animal.rendezVous.length} RDV`),
+                                React.createElement('button', {
+                                  onClick: () => { setSelectedAnimal(animal); setShowRendezVousForm(true); },
+                                  className: 'text-purple-500 hover:text-purple-600'
+                                }, '+ RDV')
+                              )
+                            )
+                          )
+                        )
+                      )
+                    )
+                  )
+                )
+              )
+            ),
 
-              {showRendezVousForm && (
-                <RendezVousForm
-                  onSubmit={addRendezVous}
-                  onCancel={() => {setShowRendezVousForm(false); setSelectedAnimal(null);}}
-                />
-              )}
-            </div>
+            // Formulaires
+            showClientForm && React.createElement(ClientForm, {
+              client: editingClient,
+              onSubmit: editingClient ? updateClient : addClient,
+              onCancel: () => { setShowClientForm(false); setEditingClient(null); }
+            }),
+            showAnimalForm && React.createElement(AnimalForm, {
+              onSubmit: addAnimal,
+              onCancel: () => { setShowAnimalForm(false); setSelectedClientId(null); }
+            }),
+            showRendezVousForm && React.createElement(RendezVousForm, {
+              onSubmit: addRendezVous,
+              onCancel: () => { setShowRendezVousForm(false); setSelectedAnimal(null); }
+            })
           );
         };
 
-        ReactDOM.render(<GroomingSalonApp />, document.getElementById('root'));
+        // Composants formulaires
+        const ClientForm = ({ client, onSubmit, onCancel }) => {
+          const [formData, setFormData] = useState(client || { nom: '', telephone: '', email: '', adresse: '' });
+          
+          return React.createElement('div', { className: 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4' },
+            React.createElement('div', { className: 'bg-white rounded-lg p-6 w-full max-w-md' },
+              React.createElement('h3', { className: 'text-xl font-bold mb-4' }, client ? 'Modifier le client' : 'Ajouter un client'),
+              React.createElement('div', { className: 'space-y-4' },
+                React.createElement('input', {
+                  type: 'text', placeholder: 'Nom complet', value: formData.nom,
+                  onChange: (e) => setFormData({ ...formData, nom: e.target.value }),
+                  className: 'w-full p-3 border rounded-lg'
+                }),
+                React.createElement('input', {
+                  type: 'tel', placeholder: 'Téléphone', value: formData.telephone,
+                  onChange: (e) => setFormData({ ...formData, telephone: e.target.value }),
+                  className: 'w-full p-3 border rounded-lg'
+                }),
+                React.createElement('input', {
+                  type: 'email', placeholder: 'Email', value: formData.email,
+                  onChange: (e) => setFormData({ ...formData, email: e.target.value }),
+                  className: 'w-full p-3 border rounded-lg'
+                }),
+                React.createElement('textarea', {
+                  placeholder: 'Adresse', value: formData.adresse,
+                  onChange: (e) => setFormData({ ...formData, adresse: e.target.value }),
+                  className: 'w-full p-3 border rounded-lg h-20'
+                })
+              ),
+              React.createElement('div', { className: 'flex gap-3 mt-6' },
+                React.createElement('button', {
+                  onClick: () => onSubmit(formData),
+                  className: 'flex-1 bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600'
+                }, client ? 'Modifier' : 'Ajouter'),
+                React.createElement('button', {
+                  onClick: onCancel,
+                  className: 'flex-1 bg-gray-300 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-400'
+                }, 'Annuler')
+              )
+            )
+          );
+        };
+
+        const AnimalForm = ({ onSubmit, onCancel }) => {
+          const [formData, setFormData] = useState({ nom: '', espece: 'Chien', race: '', age: '', photo: '🐕' });
+          const emojis = ['🐕', '🐶', '🐩', '🐱', '🐈', '🐰', '🐹'];
+
+          return React.createElement('div', { className: 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4' },
+            React.createElement('div', { className: 'bg-white rounded-lg p-6 w-full max-w-md' },
+              React.createElement('h3', { className: 'text-xl font-bold mb-4' }, 'Ajouter un animal'),
+              React.createElement('div', { className: 'space-y-4' },
+                React.createElement('input', {
+                  type: 'text', placeholder: 'Nom de l\'animal', value: formData.nom,
+                  onChange: (e) => setFormData({ ...formData, nom: e.target.value }),
+                  className: 'w-full p-3 border rounded-lg'
+                }),
+                React.createElement('select', {
+                  value: formData.espece,
+                  onChange: (e) => setFormData({ ...formData, espece: e.target.value }),
+                  className: 'w-full p-3 border rounded-lg'
+                },
+                  React.createElement('option', { value: 'Chien' }, 'Chien'),
+                  React.createElement('option', { value: 'Chat' }, 'Chat'),
+                  React.createElement('option', { value: 'Lapin' }, 'Lapin'),
+                  React.createElement('option', { value: 'Autre' }, 'Autre')
+                ),
+                React.createElement('input', {
+                  type: 'text', placeholder: 'Race', value: formData.race,
+                  onChange: (e) => setFormData({ ...formData, race: e.target.value }),
+                  className: 'w-full p-3 border rounded-lg'
+                }),
+                React.createElement('input', {
+                  type: 'number', placeholder: 'Âge', value: formData.age,
+                  onChange: (e) => setFormData({ ...formData, age: e.target.value }),
+                  className: 'w-full p-3 border rounded-lg'
+                }),
+                React.createElement('div', { className: 'space-y-2' },
+                  React.createElement('label', { className: 'block text-sm font-medium' }, 'Photo (emoji)'),
+                  React.createElement('div', { className: 'flex gap-2 flex-wrap' },
+                    emojis.map(emoji =>
+                      React.createElement('button', {
+                        key: emoji, type: 'button',
+                        onClick: () => setFormData({ ...formData, photo: emoji }),
+                        className: `text-2xl p-2 rounded ${formData.photo === emoji ? 'bg-blue-100' : 'bg-gray-100'}`
+                      }, emoji)
+                    )
+                  )
+                )
+              ),
+              React.createElement('div', { className: 'flex gap-3 mt-6' },
+                React.createElement('button', {
+                  onClick: () => onSubmit(formData),
+                  className: 'flex-1 bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600'
+                }, 'Ajouter'),
+                React.createElement('button', {
+                  onClick: onCancel,
+                  className: 'flex-1 bg-gray-300 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-400'
+                }, 'Annuler')
+              )
+            )
+          );
+        };
+
+        const RendezVousForm = ({ onSubmit, onCancel }) => {
+          const [formData, setFormData] = useState({ date: '', prestation: '', prix: '' });
+
+          return React.createElement('div', { className: 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4' },
+            React.createElement('div', { className: 'bg-white rounded-lg p-6 w-full max-w-md' },
+              React.createElement('h3', { className: 'text-xl font-bold mb-4' }, 'Ajouter un rendez-vous'),
+              React.createElement('div', { className: 'space-y-4' },
+                React.createElement('input', {
+                  type: 'date', value: formData.date,
+                  onChange: (e) => setFormData({ ...formData, date: e.target.value }),
+                  className: 'w-full p-3 border rounded-lg'
+                }),
+                React.createElement('select', {
+                  value: formData.prestation,
+                  onChange: (e) => setFormData({ ...formData, prestation: e.target.value }),
+                  className: 'w-full p-3 border rounded-lg'
+                },
+                  React.createElement('option', { value: '' }, 'Choisir une prestation'),
+                  React.createElement('option', { value: 'Bain simple' }, 'Bain simple - 20€'),
+                  React.createElement('option', { value: 'Coupe + bain' }, 'Coupe + bain - 35€'),
+                  React.createElement('option', { value: 'Toilettage complet' }, 'Toilettage complet - 45€'),
+                  React.createElement('option', { value: 'Toilettage royal' }, 'Toilettage royal - 65€'),
+                  React.createElement('option', { value: 'Épilation' }, 'Épilation - 25€')
+                ),
+                React.createElement('input', {
+                  type: 'number', placeholder: 'Prix (€)', value: formData.prix,
+                  onChange: (e) => setFormData({ ...formData, prix: e.target.value }),
+                  className: 'w-full p-3 border rounded-lg'
+                })
+              ),
+              React.createElement('div', { className: 'flex gap-3 mt-6' },
+                React.createElement('button', {
+                  onClick: () => onSubmit(formData),
+                  className: 'flex-1 bg-purple-500 text-white py-2 px-4 rounded-lg hover:bg-purple-600'
+                }, 'Ajouter'),
+                React.createElement('button', {
+                  onClick: onCancel,
+                  className: 'flex-1 bg-gray-300 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-400'
+                }, 'Annuler')
+              )
+            )
+          );
+        };
+
+        // Lancer l'application
+        ReactDOM.render(React.createElement(GroomingSalonApp), document.getElementById('root'));
     </script>
 </body>
 </html>
